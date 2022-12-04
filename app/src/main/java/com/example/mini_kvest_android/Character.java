@@ -5,7 +5,7 @@ public class Character {
     public int T;
     public int Hu;
     public Character() {
-        H = 10000;
+        H = 100;
         T = 10;
         Hu = 100;
     }
