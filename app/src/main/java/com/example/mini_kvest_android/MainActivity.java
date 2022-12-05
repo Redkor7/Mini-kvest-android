@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static boolean isEnd = false;
     ImageView imageView;
 
-    Button button;
+    Button button, button2;
 
     public int i = 0;
 
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         humanity = findViewById(R.id.textViewHu);
         storyTell = findViewById(R.id.textViewStory);
         imageView = findViewById(R.id.imageView);
+        button2 = findViewById(R.id.button2);
+        button2.setEnabled(false);
 
         manager = new Character();
         story = new Story();
@@ -51,6 +53,25 @@ public class MainActivity extends AppCompatActivity {
                     Start();
                     i++;
                 }
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manager = new Character();
+                story = new Story();
+                i = 0;
+                isEnd = false;
+                button.setText("Начать");
+                button.setEnabled(true);
+                imageView.setImageResource(View.NOT_FOCUSABLE);
+                health.setText("Здоровье: 0");
+                thirsty.setText("\tЖажда: 0" + "%");
+                humanity.setText("\tЧеловечность: 0" + "%");
+                storyTell.setText("");
+                button2.setEnabled(false);
+
             }
         });
     }
@@ -85,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     if (manager.H <= 0 || i == 4) {
                         isEnd = true;
                         button.setText("Конец");
+                        button2.setEnabled(true);
                     }
                     button.setEnabled(true);
 
